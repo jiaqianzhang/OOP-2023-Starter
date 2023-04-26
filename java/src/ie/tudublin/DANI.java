@@ -4,9 +4,7 @@ import java.util.ArrayList;
 
 import processing.core.PApplet;
 
-public class DANI extends PApplet {
-
-	
+public class DANI extends PApplet{
 
 	public void settings() {
 		size(1000, 1000);
@@ -20,13 +18,22 @@ public class DANI extends PApplet {
         return null;
     }
 
+
 	public void setup() {
 		colorMode(HSB);
-
-       
+		loadFile("small.txt");
 	}
 
 	public void keyPressed() {
+		if (keyCode == ' ')
+		{
+            if ()
+			{
+            } 
+			else 
+			{
+            }
+        }
 
 	}
 
@@ -41,4 +48,6 @@ public class DANI extends PApplet {
         textAlign(CENTER, CENTER);
         
 	}
+
+
 }
