@@ -12,29 +12,31 @@ public class DANI extends PApplet{
 	}
 
     String[] sonnet;
+	ArrayList<Word> model = new ArrayList<Word>(); // array list for words called model
 
     public String[] writeSonnet()
     {
-        return null;
+
     }
 
 
 	public void setup() {
 		colorMode(HSB);
-		loadFile("small.txt");
+		loadFile("shakespere.txt");
 	}
 
 	public void keyPressed() {
+
 		if (keyCode == ' ')
 		{
-            if ()
+			sonnet = writeSonnet(); // generate a new sonnet and store it in
+			println("Generated Sonnet:");
+			for (String line : sonnet)
 			{
-            } 
-			else 
-			{
-            }
-        }
-
+				println(line); // print the sonnet to the console
+			}
+		}
+	
 	}
 
 	float off = 0;
@@ -46,12 +48,19 @@ public class DANI extends PApplet{
 		noStroke();
 		textSize(20);
         textAlign(CENTER, CENTER);
-        
+
+		if (sonnet != null) // check if sonnet is generated
+		{ 
+			for (int i = 0; i < sonnet.length; i++)
+			{
+				text(sonnet[i], width / 2, (i + 1) * height / 16); // display each line of sonnet on screen
+			}
+		}
 	}
 
-	public void loadFile()
+	public void loadFile(String filename)
 	{
-		String[] lines = loadStrings("small.txt"); // Load the text file into a String array
+		String[] lines = loadStrings(filename); // Load the text file into a String array
         for (String line : lines)
 		{
             String[] words = split(line, ' '); // Split the line into an array of words
@@ -72,23 +81,10 @@ public class DANI extends PApplet{
         }
 	}
 
-	public Word findWord(String word)
-	{
-		for(Word w : model)
-		{
-			if (w.getWord().equals(word))
-			{
-				return w;
-			}
-		}
-
-	}
-
-	public void printModel()
+	public void findWord(String word)
 	{
 
 	}
 
-
-
+	
 }
