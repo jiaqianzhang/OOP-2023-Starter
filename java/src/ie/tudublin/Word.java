@@ -14,6 +14,7 @@ public class Word
         this.follows = new ArrayList<Follow>();
     }
 
+    // accessor method
     public String getWord() {
         return word;
     }
@@ -33,7 +34,16 @@ public class Word
         return result;
     }
 
+    public Follow findFollow(String word)
+    {
+        for (Follow follow : follows)
+        {
+            if (follow.getWord().equals(word))
+            {
+                return follow;
+            }
+        }
+        return null;
+    }
+
 }
-
-
-// write me a java file called DANI.java. DANI is an AI capable of many tasks, such as writing Poetry. DANI works, by loading a text document and storing a list of each word from the document in an ArrayList along with an ArrayList of what words follow the word. Each word is listed once in the model, regardless of how many times it occurs in the document. Each word is printed and all of the words that follow the word in the text with a count of how many times it follows the word are listed. To write a poem, DANI picks one word at random from the model and starts with that. Then DANI looks to see what possible words will follow the chosen word and it picks one at random from the list for the next word. It then repeats the process until it has 8 words, or until it finds a word that has nothing following it - in which case it will terminate the sentence. It does this 14 times to write a poem as there are 14 lines in a sonnet. DANI prints the generated sonnet to the Processing window. Pressing SPACE will generate a new sonnet

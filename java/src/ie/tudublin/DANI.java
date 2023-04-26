@@ -49,5 +49,46 @@ public class DANI extends PApplet{
         
 	}
 
+	public void loadFile()
+	{
+		String[] lines = loadStrings("small.txt"); // Load the text file into a String array
+        for (String line : lines)
+		{
+            String[] words = split(line, ' '); // Split the line into an array of words
+            for (String word : words)
+			{
+                word = word.replaceAll("[^\\w\\s]", ""); // Remove punctuation characters
+                word = word.toLowerCase(); // Convert the word to lower case
+
+                // Check if the word already exists in the model
+                Word existingWord = findWord(word);
+                if (existingWord == null)
+				{
+                    // If the word does not exist, add it to the model
+                    Word newWord = new Word(word);
+                    model.add(newWord);
+                }
+            }
+        }
+	}
+
+	public Word findWord(String word)
+	{
+		for(Word w : model)
+		{
+			if (w.getWord().equals(word))
+			{
+				return w;
+			}
+		}
+
+	}
+
+	public void printModel()
+	{
+
+	}
+
+
 
 }
