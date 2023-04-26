@@ -16,7 +16,39 @@ public class DANI extends PApplet{
 
     public String[] writeSonnet()
     {
-
+		String[] sonnet = new String[14]; // array for 14 lines of sonnett
+		
+		for(int i = 0; i < 14; i++)
+		{
+			String line = " "; // empty line for each iteration
+			Word word = model.get((int) random(model.size())); // get a random word to start
+	
+			for (int j = 0; j < 8; j ++)
+			{
+				line += word.getWord() + " "; // append the word to the line
+				ArrayList<Follow> follows = word.getFollows(); // get all the follows
+	
+				if (follows.size()> 0)
+				{
+					int randomIndex = (int) random(follows.size()); // choose a random follow word if the word has follows 
+					String followWord = follows.get(randomIndex).getWord();
+					for (Word w : model)
+					{
+						if (w.getWord().equals(followWord))
+						{
+							word = w;
+							break;
+						}
+					}
+				}
+				else
+				{
+					break; // if the word has no follows then the sentence is finsihe
+				}
+			}
+			sonnet[i] = line.trim(); // stores the line in the sonnet array
+		}
+		return sonnet;
     }
 
 
@@ -81,10 +113,28 @@ public class DANI extends PApplet{
         }
 	}
 
-	public void findWord(String word)
+	public Word findWord(String word)
 	{
-
+		for(Word w : model)
+		{
+			if (w.getWord().equals(w))
+			{
+				return w;
+			}
+		}
+		return null;
 	}
 
-	
+	public void printModel()
+	{
+		for (Word word : model)
+		{
+			System.out.print(word.getWord() + ": ");
+			ArrayList<Follow> follows = word.getFollows();
+			for (Follow follow : follows) {
+				System.out.print(follow.getWord() + "(" + follow.getCount() + ") ");
+			}
+			System.out.println();
+		}
+	}
 }
