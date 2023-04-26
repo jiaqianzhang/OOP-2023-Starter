@@ -92,21 +92,19 @@ public class DANI extends PApplet{
 
 	public void loadFile(String filename)
 	{
-		String[] lines = loadStrings(filename); // Load the text file into a String array
+		String[] lines = loadStrings(filename); // load the text file into a String array
         for (String line : lines)
 		{
-            String[] words = split(line, ' '); // Split the line into an array of words
+            String[] words = split(line, ' '); // split the line into an array of words
             for (String word : words)
 			{
-                word = word.replaceAll("[^\\w\\s]", ""); // Remove punctuation characters
-                word = word.toLowerCase(); // Convert the word to lower case
+                word = word.replaceAll("[^\\w\\s]", ""); // remove punctuation characters
+                word = word.toLowerCase(); // convert to lower case
 
-                // Check if the word already exists in the model
-                Word existingWord = findWord(word);
+                Word existingWord = findWord(word);// check if the word already exists in the model
                 if (existingWord == null)
 				{
-                    // If the word does not exist, add it to the model
-                    Word newWord = new Word(word);
+                    Word newWord = new Word(word);// if the word does not exist, add it to the model
                     model.add(newWord);
                 }
             }
@@ -115,24 +113,25 @@ public class DANI extends PApplet{
 
 	public Word findWord(String word)
 	{
-		for(Word w : model)
+		for(Word w : model) // iterate each word in model
 		{
-			if (w.getWord().equals(w))
+			if (w.getWord().equals(word))// euqla() to compare word with word objects
 			{
-				return w;
+				return w; // return word object
 			}
 		}
-		return null;
+		return null; // or null
 	}
 
 	public void printModel()
 	{
 		for (Word word : model)
 		{
-			System.out.print(word.getWord() + ": ");
+			System.out.print(word.getWord() + ": "); // prints each owrd
 			ArrayList<Follow> follows = word.getFollows();
-			for (Follow follow : follows) {
-				System.out.print(follow.getWord() + "(" + follow.getCount() + ") ");
+			for (Follow follow : follows)// iterlate through follows
+			{
+				System.out.print(follow.getWord() + "(" + follow.getCount() + ") "); // print word and count
 			}
 			System.out.println();
 		}

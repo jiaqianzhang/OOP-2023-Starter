@@ -2,8 +2,8 @@ package ie.tudublin;
 
 public class Follow
 {      
-    private String word;
-    private int count;
+    private String word; // string for words
+    private int count; // int for counting
     
     public Follow(String word, int count)
     {
@@ -21,10 +21,11 @@ public class Follow
         return count;
     }
 
+    // print word and count
     public String toString()
     {
         return word + " : " + "( " + count + " )";
     }
 
-    
+
 }

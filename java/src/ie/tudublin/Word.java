@@ -24,10 +24,11 @@ public class Word
         return follows;
     }
 
+    // return string of word
     public String toString() 
     {
         String result = "Word: " + word + ", Follows: ";
-        for (Follow follow : follows)// for loop
+        for (Follow follow : follows)// iterate through follow to return string of wrd
         {
             result += follow.toString() + " ";
         }
@@ -36,14 +37,14 @@ public class Word
 
     public Follow findFollow(String word)
     {
-        for (Follow follow : follows)
+        for (Follow follow : follows) // iterate through follow
         {
-            if (follow.getWord().equals(word))
+            if (follow.getWord().equals(word)) // find follow with same word
             {
-                return follow;
+                return follow; // return follow
             }
         }
-        return null;
+        return null; // or null
     }
 
 }
